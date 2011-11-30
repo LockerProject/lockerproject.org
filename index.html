@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<!-- made of awesome and a few slices of hipster -->
+
+<html>
+
+<head>
+  <title>The Locker Project</title>
+  <link rel="stylesheet" media="screen" href="styles/tlp.css"> 
+  <script src="scripts/jquery.min.js"></script>
+  <script>
+        $(function() {
+        
+                function filterPath(string) {
+                        return string
+                        .replace(/^\//,'')
+                        .replace(/(index|default).[a-zA-Z]{3,4}$/,'')
+                        .replace(/\/$/,'');
+                }
+        
+                var locationPath = filterPath(location.pathname);
+                var scrollElem = scrollableElement('html', 'body');
+        
+                // Any links with hash tags in them (can't do ^= because of fully qualified URL potential)
+                $('a[href*=#]').each(function() {
+        
+                        // Ensure it's a same-page link
+                        var thisPath = filterPath(this.pathname) || locationPath;
+                        if (  locationPath == thisPath
+                                && (location.hostname == this.hostname || !this.hostname)
+                                && this.hash.replace(/#/,'') ) {
+        
+                                        // Ensure target exists
+                                        var $target = $(this.hash), target = this.hash;
+                                        if (target) {
+        
+                                                // Find location of target
+                                                var targetOffset = $target.offset().top;
+                                                $(this).click(function(event) {
+        
+                                                        // Prevent jump-down
+                                                        event.preventDefault();
+        
+                                                        // Animate to target
+                                                        $(scrollElem).animate({scrollTop: targetOffset}, 400, function() {
+        
+                                                                // Set hash in URL after animation successful
+                                                                location.hash = target;
+        
+                                                        });
+                                                });
+                                        }
+                        }
+        
+                });
+        
+                // Use the first element that is "scrollable"  (cross-browser fix?)
+                function scrollableElement(els) {
+                        for (var i = 0, argLength = arguments.length; i <argLength; i++) {
+                                var el = arguments[i],
+                                $scrollElement = $(el);
+                                if ($scrollElement.scrollTop()> 0) {
+                                        return el;
+                                } else {
+                                        $scrollElement.scrollTop(1);
+                                        var isScrollable = $scrollElement.scrollTop()> 0;
+                                        $scrollElement.scrollTop(0);
+                                        if (isScrollable) {
+                                                return el;
+                                        }
+                                }
+                        }
+                        return [];
+                }
+        
+        });
+  </script>
+
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-22812443-2']);
+    _gaq.push(['_setDomainName', '.lockerproject.org']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+
+</head>
+
+<body>
+
+<div id="headbar"></div>
+
+<div id="menu"> 
+  <a href="http://github.com/lockerproject/locker"><img style="position: absolute; top: 0; right: 0; border: 0;" src="images/forkme.png" alt="Fork me on GitHub"></a>
+  <div class="nav"> 
+    <a href="http://www.lockerproject.org" class="logo"><img src="images/tlp_web_logo.png"></a>
+    <div id ="navlinks"> 
+      <a href="#about" class="toplink">ABOUT</a> 
+      <a href="#vision" class="toplink">VISION</a> 
+      <a href="#ecosystem" class="toplink">ECOSYSTEM</a> 
+      <a href="#engage" class="toplink">ENGAGE</a> 
+      <a href="http://blog.lockerproject.org" class="toplink">BLOG</a> 
+      <a href="http://github.com/LockerProject/Locker/wiki" class="toplink">DOCS</a> 
+      <a href="http://github.com/LockerProject/Locker" class="toplink">CODE</a> 
+    </div>  
+  </div> 
+</div> 
+
+<div id="space">
+</div>
+
+<div id="main">
+
+		<section id="tlp_about">
+		<span id="about" class="bookmark"></span>
+			<div class="content">
+				<h2>What is the Locker Project?</h2>
+				<p>A Locker gives people ownership over their personal data and clear control over how it's protected and shared. Providing flexible APIs for access to that data, Lockers are a powerful way for developers to build applications that leverage rich personal data.</p>
+				<p>The Locker Project is an open source development effort, licensed under the three-clause BSD License, and sponsored by <a href="http://singly.com">Singly</a>. The core team working on the Locker Project is composed of passionate individuals who spend much of their waking (and sleeping) time thinking about personal data, identity, and the future of communication online and off.</p>
+				<p>The code base of the Locker Project is primarily developed using <a href="http://nodejs.org">node.js</a>, with a bit of Python to facilitate some integration points. We use <a href="http://npmjs.org">npm</a> to help manage internal system dependencies, and we try to follow <a href="http://en.wikipedia.org/wiki/Test-driven_development">TDD/BDD</a> as enthusiastically as our time will allow. Hopefully, these things will make it easy and exciting for interested developers to jump in, grok the system and start coding!</p>
+				<p> To get started with local development, Lockerbox (by pib) is a straightforward way to get all the high-level dependencies installed at once. It will make a single directory called lockerbox and get everything set up inside of there.:</p>
+				<pre>
+    curl https://github.com/LockerProject/lockerbox/raw/master/lockerbox.sh > lockerbox.sh
+    chmod 0755 lockerbox.sh
+    ./lockerbox.sh
+				</pre>
+				When that successfully completes, add lockerbox/local/bin to your path:
+				<pre>
+    echo 'export PATH=$PATH:'`pwd`/lockerbox/local/bin >> ~/.profile
+    source ~/.profile
+				</pre>
+                Then:
+				<pre>
+    cd lockerbox/Locker
+    #check to make sure everything worked
+    ./checkEnv.sh
+    node lockerd.js
+				</pre>
+				If you encounter errors in "the fast way", or if you want to go through the process of setting everything up manually, check out the <a href="https://github.com/LockerProject/Locker/wiki/Detailed-Set-Up-Instructions">detailed set up instructions</a>.
+				<img src="images/infinite_possibility.png" class="interstitial_right">
+				<h3>Telehash</h3>
+				<p>Soon, the Locker Project will integrate with <a href="http://telehash.org">Telehash</a>, providing fully distributed P2P communication for all lockers. Each locker can serve as a switch on the Telehash network, and maintain addressability on the <a href="http://en.wikipedia.org/wiki/Kademlia">Kademlia-based</a> distributed hash table that rests at the heart of the Telehash protocol. This integration will provide incredible flexibility and integrity for communication channels to and between lockers.</p>
+			</div>
+		</section>
+		
+		<section id="tlp_vision">
+		<span id="vision" class="bookmark"></span>
+			<div class="content">
+				<h2>Vision</h2>
+				<h3>Why We're Doing This</h3>
+				<p>As we go through our lives we create vast amounts of data. Emails, phone calls, social network posts, photos, utility bills, health monitoring devices, text messages, browsing data, purchase receipts and more are all born out of the regular course of our actions.  It's more than just data.  It represents our actions, interests, intentions, communications, relationships, locations, behaviors and creative and consumptive efforts.</p>
+				
+				<p>Currently, our data is scattered everywhere. It lives in and is usually owned by the various networks into which it was created or exchanged. It's aggregated by third party trackers and targeters looking to deliver advertising, content and services to you. Billions of dollars are exchanged, industries built upon and value created off of our data, and it serves as the basis and is the foundation for some of the largest power structures on the web, and in the world at large.</p>
+		
+				<p>Meanwhile, the people who have benefited least from this ecosystem are the very people originating the data. Often times, in fact, these channels and organizations go out of their way to limit our ability to extract our data from the network and reuse our own content.  Limitless opportunities for engaging personalized applications and web experiences, as well as more free and open communication are lost when this happens.</p>
+				
+				<h3>How Lockers Work</h3>		
+				<p>Lockers are systems that allow people to collect all of their data into one resource that they truly own. Even the code base of the Locker Project is open source, ensuring that people can run their lockers as they see fit, where they see fit.</p>
+		
+				<p>By using a rich system of connectors and collections, lockers make it possible to access and aggregate personal data, even when no traditional web API exists for the source. Interactions between lockers, applications, data and services are encrypted and secured via a highly secure protocol and system of authorization. Singly is working with experts and thought-leaders throughout the industry to provide open solutions to ensuring robust security for these personal data systems. This allows for even sensitive data to be safely included in a locker and made available for a person at all times.</p>
+				
+				<h3>What is Singly?</h3>
+				<p>Data ownership alone doesn't solve the problem of providing discrete value to a person. To deliver real and actionable value, Singly is sponsoring the open source project's development and further extending the Locker Project's trust and authentication ecosystem to enable application developers to build powerful products on top of personal data. We are looking to solve the parallel problems of developers' access to and maintenance of personal data and individuals' needs for data ownership and security, enabling a whole new class of valuable interactions between people, their data and creative developers world-wide.</p>
+			</div>
+		</section>
+		
+		<section id="tlp_ecosystem">
+		<span id="ecosystem" class="bookmark"></span>
+			<div class="content">
+				<h2>Ecosystem</h2>
+				<p>The Locker Project does not exist in a void, but rather is part of a thriving ecosystem of policy, systems and technology designers working to improve the state personal data ownership and usage, identity, and context generation and exchange.</p>
+				
+				<p>Some of the key players in this space include the <a href="http://personaldataecosystem.org/">Personal Data Ecosystem Consortium</a>, the <a href="http://www.idcommons.net/">Identity Commons</a>, <a href="http://cyber.law.harvard.edu/research/projectvrm">Project VRM</a> and others.</p>
+		
+			</div>
+		</section>
+		
+		<section id="tlp_engage">
+		<span id="engage" class="bookmark"></span>
+			<div class="content">
+				<h2>Engage</h2>
+				<p>Development and design are moving along at a rapid pace, and the community is engaged in some great discussions. Join us on <a href="irc://irc.freenode.net/lockerproject">IRC at #lockerproject on irc.freenode.net</a> or take a look through the <a href="http://logs.lockerproject.org">logs</a> to see what people have been talking about. You can also engage with the core team on Twitter via <a href="http://twitter.com/#!/lockerproject">@lockerproject</a>.</p>
+				<p>The <a href="http://github.com/quartzjer/Locker">code</a>, <a href="http://github.com/LockerProject/Locker/wiki">wiki</a> and <a href="http://github.com/LockerProject/Locker/issues">issues</a> on Github are all great places to get your hands on the code and familiar with the architecture of the system. We try to be as responsive as possible to pull requests and issues, so feel free to fork and hack!</p>
+			</div>
+		</section>
+		
+</div>
+
+<div id="footer">
+	<div class="footer_buffer"></div>
+	<div class="footer_content">
+		<dl>
+			<dd><a href="http://twitter.com/#!/lockerproject">@lockerproject</a></dd>
+			<dd><a href="http://twitter.com/#!/singlyinc">@singlyinc</a></dd>
+			<dd><a href="irc://irc.freenode.net/lockerproject">#lockerproject</a></dd>
+			<dd><a href="http://github.com/LockerProject/Locker">code on github</a></dd>
+		</dl>
+		<dl>
+			<dd><a href="#team">core team</a></dd>
+			<dd><a href="http://singly.com/#eighth">singly jobs</a></dd>
+			<dd><a href="http://blog.lockerproject.org">tlp blog</a></dd>
+			<dd><a href="http://blog.singly.com">singly blog</a></dd>
+		</dl>
+		<dl>
+			<dd><a href="http://goo.gl/maps/qnhw">Mission:HQ</a></dd>
+			<dd><a href="http://goo.gl/maps/qnhw">777 Florida</a></dd>
+			<dd><a href="http://goo.gl/maps/qnhw">Unit 301</a></dd>
+			<dd><a href="http://goo.gl/maps/qnhw">San Francisco CA</a></dd>
+		</dl>
+		<dl>
+			<a href="http://telehash.org" class="image_link"><img src="images/telehash_block_white_small.png"></a>
+		</dl>
+	</div>
+</div>
+
+<dir id="abyss">
+	<section id="tlp_core_team">
+	<span id="team" class="bookmark"></span>
+	    <div class="content">
+	    	<h3>TLP :: Core Team</h3>
+	    	<p>The Locker Project is an open source effort with many awesome contributors. For the full list of contributors, check out the <a href="http://github.com/LockerProject/Locker/network" target="new">Github network view</a>.  Get really involved and we'll add you to the wall of shame too!</p>
+	    	<p>We're looking to add more talented and passionate members to the team, so <a href="http://singly.com/#eighth">let us know</a> if you'd like to help make something awesome!</p>
+	    	<div class="bios">
+	    	<div class="bio">
+		    	<img src="images/jer.png" class="interstitial_right">
+	    		<div class="biolinks">
+	    			<a href="http://twitter.com/#!/jeremie" target="new"><img src="images/twitter_logo.png"></a>
+	    			<a href="http://github.com/quartzjer" target="new"><img src="images/github_logo.png"></a>
+	    			<a href="mailto:jer@singly.com"><img src="images/email_logo.png"></a>
+	    		</div>
+	     		<h4>Jeremie (quartzjer) Miller &#x26A1; Cofounder Singly</h4>
+	    		<p>Distributed protocol and communication platform dreamer, Jeremie loves building open systems that put people at the center. With a history steeped in XML, XMPP, Jabber, JSON, and TeleHash he's always eager to create and explore new tech.</p>
+	    	</div>
+	    	<div class="bio">
+	    		<img src="images/sms.png" class="interstitial_right">
+	    		<div class="biolinks">
+	    			<a href="http://twitter.com/#!/smurthas" target="new"><img src="images/twitter_logo.png"></a>
+	    			<a href="http://github.com/smurthas" target="new"><img src="images/github_logo.png"></a>
+	    			<a href="mailto:simon@singly.com"><img src="images/email_logo.png"></a>
+	    		</div>
+	    		<h4>Simon (smurthas) Murtha-Smith &#x26A1; Cofounder Singly</h4>
+	    		<p>Brooklyn hipster in the San Francisco Mission. Epic hacker. An innovator and entrepreneur at heart, Simon is leveraging his startup and tech experience from Introspectr to help build out a new class of application for personal data.</p>
+	    	</div>
+	    	<div class="bio">
+	    		<img src="images/mdz.png" class="interstitial_right">
+	    		<div class="biolinks">
+	    			<a href="http://twitter.com/#!/mdzimm" target="new"><img src="images/twitter_logo.png"></a>
+	    			<a href="http://github.com/mdz" target="new"><img src="images/github_logo.png"></a>
+	    			<a href="mailto:mdz@singly.com"><img src="images/email_logo.png"></a>
+	    		</div>
+	    		<h4>Matt (mdz) Zimmerman &#x26A1; Guru</h4>
+	    		<p>A veteran of the free software community, Matt believes in the transformative potential of technology in our lives. He is fascinated by the science and philosophy of mind, and how complex systems reveal insights into human nature. As founding CTO of Ubuntu, he spent the better part of a decade making Linux accessible, useful and enjoyable for tens of millions of people.</p>
+	    	</div>
+	    	<div class="bio">
+	    		<img src="images/temas.png" class="interstitial_right">
+	    		<div class="biolinks">
+	    			<a href="http://twitter.com/#!/temas" target="new"><img src="images/twitter_logo.png"></a>
+	    			<a href="http://github.com/temas" target="new"><img src="images/github_logo.png"></a>
+	    			<a href="mailto:temas@singly.com"><img src="images/email_logo.png"></a>
+	    		</div>
+	    		<h4>Thomas (temas) Muldowney &#x26A1; Game Master</h4>
+	    		<p>Thomas Muldowney has been trying to Chuck Norris code since the earliest days of Jabber.  When he's not coding he spends his time trying to be the chief cat herder for the Locker Project's open source community.  If you see him off his computer the internet is probably down, or possibly spending time with the family. </p>
+	    	</div>
+	    	<div class="bio">
+	    		<img src="images/ctide.png" class="interstitial_right">
+	    		<div class="biolinks">
+	    			<a href="http://twitter.com/#!/ctide" target="new"><img src="images/twitter_logo.png"></a>
+	    			<a href="http://github.com/ctide" target="new"><img src="images/github_logo.png"></a>
+	    			<a href="mailto:chris@singly.com"><img src="images/email_logo.png"></a>
+	    		</div>
+	    		<h4>Chris (ctide) Burkhart &#x26A1; Karaoke Boss</h4>
+	    		<p>Chris found his way to our team after working on several products that help improve quality of life for people through understanding and tracking personal habits through data. Chris excels at getting ahead of problems, drinking coffee and cranking out code. He's known to occasionally rock a karaoke bar and toss back a PBR.</p>
+	    	</div>
+	    	<div class="bio">
+	    		<img src="images/eric.png" class="interstitial_right">
+	    		<div class="biolinks">
+	    			<a href="http://twitter.com/#!/erictj" target="new"><img src="images/twitter_logo.png"></a>
+	    			<a href="http://github.com/erictj" target="new"><img src="images/github_logo.png"></a>
+	    			<a href="mailto:eric@singly.com"><img src="images/email_logo.png"></a>
+	    		</div>
+	    		<h4>Eric (erictj) Jennings &#x26A1; Rebel from Reno</h4>
+	    		<p>Eric secretly has a huge crush on the programming language Erlang, but also enjoys spending time with her cute younger sister Javascript. When not hacking on code, he often finds himself in front of an Arduino board, analog synthesizers, or the book Human Action.</p>
+	    	</div>
+	    	<div class="bio">
+	    		<img src="images/nym.png" class="interstitial_right">
+	    		<div class="biolinks">
+	    			<a href="http://twitter.com/#!/nym" target="new"><img src="images/twitter_logo.png"></a>
+	    			<a href="http://github.com/nym" target="new"><img src="images/github_logo.png"></a>
+	    			<a href="mailto:nym@singly.com"><img src="images/email_logo.png"></a>
+	    		</div>
+	    		<h4>Tom (nym) Longson &#x26A1; iGargoyle</h4>
+	    		<p>Tom is a visual artist when it comes to the web page, hacking JavaScript and designing interfaces. Through tenures at Wells Fargo, Cars.com and Disney, he has taken up a love for building experiences that are accessible, understandable, maintainable and that evoke trust. When he's not trying to improve the web, he's probably taking panoramas, dancing, or playing board games.</p>
+	    	</div>
+	    	<div class="bio">
+	    		<img src="images/forrest.png" class="interstitial_right">
+	    		<div class="biolinks">
+	    			<a href="http://twitter.com/#!/othiym23" target="new"><img src="images/twitter_logo.png"></a>
+	    			<a href="http://github.com/othiym23" target="new"><img src="images/github_logo.png"></a>
+	    			<a href="mailto:forrest@singly.com"><img src="images/email_logo.png"></a>
+	    		</div>
+	    		<h4>Forrest (othiym23) Norvell &#x26A1; &#937;mega Nerd</h4>
+	    		<p>Forrest arrives by way of years in the Medium Data trenches and a long history of trying to make mutually hostile code bases play nice with each other. His interests include scaling data both up and across, and making do with what you've got rather than with what you think you ought to have. He enjoys the lesser works of John Carpenter, the poetry of Anna Akhmatova, and has given up trying to describe what kinds of music he likes.</p>
+	    	</div>
+	    	<div class="bio">
+	    		<img src="images/rand.png" class="interstitial_right">
+	    		<div class="biolinks">
+	    			<a href="http://twitter.com/#!/sixwing" target="new"><img src="images/twitter_logo.png"></a>
+	    			<a href="http://github.com/rand" target="new"><img src="images/github_logo.png"></a>
+	    			<a href="mailto:rand@singly.com"><img src="images/email_logo.png"></a>
+	    		</div>
+	    		<h4>Rand (sixwing) Fitzpatrick &#x26A1; Product Monster</h4>
+	    		<p>Rand is passionate about life and constantly seeking to improve it. He's summed it up in his two rules for living: 1. Leave the world a better place than you found it, 2. Have as much fun as possible while doing so. His attention is usually focused on product design, physical arts and cognitive science, always seeking to apply the basic principles of cybernetics and &#964;&#941;&#967;&#957;&#951; to life and work.</p>
+	    	</div>
+	    	</div>
+	    </div>
+	</section>
+</dir>
+
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-22812443-2']);
+_gaq.push(['_setDomainName', 'lockerproject.org']);
+_gaq.push(['_setAllowHash', false]);
+_gaq.push(['_trackPageview']);
+
+(function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ })();
+
+</script>
+</body>
+
+<!-- Shh, this part is a secret, 42 -->
+</html>

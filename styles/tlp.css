@@ -1,0 +1,319 @@
+body {
+	margin: 0px;
+	font-size: 13px;
+	font-family: 'futura', 'helveticaneue', Helvetica, Arial, sans-serif;
+	background-color: white;
+}
+
+a {
+	color: #504F4E;
+	text-decoration: none;
+}
+
+a:focus {
+	outline: none!important;
+}
+
+a:hover {
+	outline: none!important;
+}
+
+a:active {
+	outline: none!important;
+}
+
+section h1 {
+	font-size: 25px;
+	font-weight: 700;
+}
+
+section h2 {
+	font-size: 21px;
+	font-weight: 500;
+	margin-top: 42px;
+}
+
+section h3 {
+	font-size: 17px;
+	font-weight: 300;
+}
+
+section p {
+	color: #504F4E;
+	line-height: 130%;
+	margin-bottom: 21px;
+}
+
+section p.summary {
+	border: 2px solid #989697;
+	overflow: auto;
+	padding-top: 13px;
+	padding-left: 22px;
+	padding-right: 22px;
+	padding-bottom: 13px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	height: 50px;
+	
+}
+
+dl {
+	display: inline;
+	float: left;
+	position: relative;
+	margin-right: 10px;
+}
+
+dd {
+	margin-bottom: 12px;
+	line-height: 120%;
+}
+
+#headbar {
+	background-color: #504F4E;
+	height: 2px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 27;
+}
+
+#menu {
+	position:fixed;
+	right: auto;        
+	left: auto;   
+	top:2px;
+	background-color: white;
+	-moz-box-shadow: 0px 6px 7px #504F4E;
+	-webkit-box-shadow: 0px 6px 7px #504F4E;
+	box-shadow: 0px 6px 7px #504F4E;
+	display:block;
+	height:120px;
+	width:100%;
+	z-index: 14;
+	margin-bottom: 21px;
+}
+
+#space {
+	margin-bottom: 150px;
+}
+
+#navlinks {
+	margin-top: 55px;
+}
+
+
+#footer {
+	margin-top: 70px;
+	height: 700px;
+	width: 100%;
+	background-color: #504F4E;
+	color: white;
+}
+
+#main {
+	margin-bottom: 160px;
+}
+
+.nav {
+	margin-top: 30px;
+	position: absolute;
+	width: 100%;
+	margin: 30px auto;
+	color: #504F4E;
+	line-height: 130%;
+	margin-bottom: 21px;
+	display: inline;
+	width: 960px;
+}
+
+.nav a.toplink {
+	padding-right: 1%;
+	padding-left: 1%;
+}
+
+a.logo {
+	padding-left: 30px; 
+	padding-right: 90px;  
+	z-index: 11;
+	float: left;
+}
+
+.content {
+	margin-bottom: 0;
+	margin-left: 145px;
+	margin-right: 145px;
+	width: 800px;
+}
+
+.content a {
+	color: #888;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.footer_buffer {
+	height: 21px;
+	width: 100%;
+	background-color: #504F4E;
+}
+
+
+.footer_content {
+	width: 1000px;
+}
+
+.footer_content a {
+	margin-left: 100px;
+	margin-right: 50px;
+	text-decoration: none;
+	color: white;
+	font-weight: 500;
+}
+
+.footer_content a.image_link {
+	float: right;
+}
+
+.footer_content dl {
+	margin-left: 0;
+	margin-right: -30px;
+}
+
+.bookmark {
+	display: block;
+	width: 0;
+	height: 0;
+	position: relative;
+	top: -150px;
+}
+
+.content pre {
+	background-color: #F8F8F8;
+	border: 1px solid #CCC;
+	font-size: 13px;
+	line-height: 150%;
+	overflow: auto;
+	padding-top: 18px;
+	padding-left: 9px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+img.interstitial_right {
+	display: inline;
+	float: right;
+	margin-top: 46px;
+	margin-bottom: 7px;
+	margin-left: 25px;
+}
+
+img.interstitial_left {
+	display: inline;
+	float: left;
+	margin-top: 25px;
+	margin-bottom: 7px;
+	margin-right: 25px;
+}
+
+#abyss {
+	height: 1800px;
+	margin: 0;
+	width: 100%;
+	padding: 0;
+	background-color: #504F4E;
+	color: white;
+}
+
+#abyss a {
+	color: white;
+	font-weight: 700;
+}
+
+#abyss section p {
+	color: white;
+	margin-bottom: 11px;
+}
+
+#abyss section h3 {
+	font-size: 21px;
+	font-weight: 500;
+	margin: 0;
+	color: white;
+}
+
+#abyss section h4 {
+	font-size: 17px;
+	font-weight: 500;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	color: white;
+}
+
+h4.right {
+	float: right;
+}
+
+#abyss img {
+	margin-top: 3px;
+	margin-left: 42px;
+}
+
+.bios {
+	margin-top: 42px;
+}
+
+.bios dl.right {
+	display: inline;
+	float: left;
+	margin-left: 0px;
+}
+
+.bios dl.left {
+	display: inline;
+	float: left;
+	margin-right: 0px;
+}
+
+.bios dl.right dd {
+	margin-left: 40px;
+	float: left;
+}
+
+.bios dl.left dd {
+	margin-right: 40px;
+	margin-left: 0;
+}
+
+.bio {
+	display: block;
+	height: 145px;
+	margin-top: 20px;
+	border: 2px solid #989697;
+	overflow: auto;
+	padding-top: 13px;
+	padding-left: 9px;
+	padding-right: 9px;
+	padding-bottom: 0;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.biolinks {
+	display: inline;
+	float: right;
+	width: 70px;
+}
+
+#quote h1 {
+	text-align: center;
+	font-size: 42px;
+	margin-top: 150px;
+}
+
+#survey {
+	margin-left: 145px;
+}
