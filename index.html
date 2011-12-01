@@ -120,31 +120,8 @@
 		<span id="about" class="bookmark"></span>
 			<div class="content">
 				<h2>What is the Locker Project?</h2>
-				<p>A Locker gives people ownership over their personal data and clear control over how it's protected and shared. Providing flexible APIs for access to that data, Lockers are a powerful way for developers to build applications that leverage rich personal data.</p>
-				<p>The Locker Project is an open source development effort, licensed under the three-clause BSD License, and sponsored by <a href="http://singly.com">Singly</a>. The core team working on the Locker Project is composed of passionate individuals who spend much of their waking (and sleeping) time thinking about personal data, identity, and the future of communication online and off.</p>
-				<p>The code base of the Locker Project is primarily developed using <a href="http://nodejs.org">node.js</a>, with a bit of Python to facilitate some integration points. We use <a href="http://npmjs.org">npm</a> to help manage internal system dependencies, and we try to follow <a href="http://en.wikipedia.org/wiki/Test-driven_development">TDD/BDD</a> as enthusiastically as our time will allow. Hopefully, these things will make it easy and exciting for interested developers to jump in, grok the system and start coding!</p>
-				<p> To get started with local development, Lockerbox (by pib) is a straightforward way to get all the high-level dependencies installed at once. It will make a single directory called lockerbox and get everything set up inside of there.:</p>
-				<pre>
-    curl https://github.com/LockerProject/lockerbox/raw/master/lockerbox.sh > lockerbox.sh
-    chmod 0755 lockerbox.sh
-    ./lockerbox.sh
-				</pre>
-				When that successfully completes, add lockerbox/local/bin to your path:
-				<pre>
-    echo 'export PATH=$PATH:'`pwd`/lockerbox/local/bin >> ~/.profile
-    source ~/.profile
-				</pre>
-                Then:
-				<pre>
-    cd lockerbox/Locker
-    #check to make sure everything worked
-    ./checkEnv.sh
-    node lockerd.js
-				</pre>
-				If you encounter errors in "the fast way", or if you want to go through the process of setting everything up manually, check out the <a href="https://github.com/LockerProject/Locker/wiki/Detailed-Set-Up-Instructions">detailed set up instructions</a>.
-				<img src="images/infinite_possibility.png" class="interstitial_right">
-				<h3>Telehash</h3>
-				<p>Soon, the Locker Project will integrate with <a href="http://telehash.org">Telehash</a>, providing fully distributed P2P communication for all lockers. Each locker can serve as a switch on the Telehash network, and maintain addressability on the <a href="http://en.wikipedia.org/wiki/Kademlia">Kademlia-based</a> distributed hash table that rests at the heart of the Telehash protocol. This integration will provide incredible flexibility and integrity for communication channels to and between lockers.</p>
+				<p>A Locker is a container for personal data, which gives the owner the ability to control how it's protected and shared.  It retrieves and consolidates data from multiple sources, to create a single collection of the things you see and do online: the photos you take, the places you visit, the links you share, contact details for the people you communicate with, and much more.  It also provides flexible APIs for developers to build rich applications with access to all of this information.</p>
+				<p>The Locker Project is an open source development effort, permissively licensed, and sponsored by <a href="http://singly.com">Singly</a>.</p>
 			</div>
 		</section>
 		
@@ -182,8 +159,25 @@
         <span id="download" class="bookmark"></span>
             <div class="content">
             <h2>Download</h2>
-            <p>...
-            </p>
+				<p> To get started with local development, Lockerbox (by pib) is a straightforward way to get all the high-level dependencies installed at once. It will make a single directory called lockerbox and get everything set up inside of there.:</p>
+				<pre>
+    curl https://github.com/LockerProject/lockerbox/raw/master/lockerbox.sh > lockerbox.sh
+    chmod 0755 lockerbox.sh
+    ./lockerbox.sh
+				</pre>
+				When that successfully completes, add lockerbox/local/bin to your path:
+				<pre>
+    echo 'export PATH=$PATH:'`pwd`/lockerbox/local/bin >> ~/.profile
+    source ~/.profile
+				</pre>
+                Then:
+				<pre>
+    cd lockerbox/Locker
+    #check to make sure everything worked
+    ./checkEnv.sh
+    node lockerd.js
+				</pre>
+				If you encounter errors in "the fast way", or if you want to go through the process of setting everything up manually, check out the <a href="https://github.com/LockerProject/Locker/wiki/Detailed-Set-Up-Instructions">detailed set up instructions</a>.
             </div>
         </section>
 		
@@ -192,7 +186,12 @@
 			<div class="content">
 				<h2>Get Involved</h2>
 				<p>Development and design are moving along at a rapid pace, and the community is engaged in some great discussions. Join us on <a href="irc://irc.freenode.net/lockerproject">IRC at #lockerproject on irc.freenode.net</a> or take a look through the <a href="http://logs.lockerproject.org">logs</a> to see what people have been talking about. You can also engage with the core team on Twitter via <a href="http://twitter.com/#!/lockerproject">@lockerproject</a>.</p>
+				<p>The code base of the Locker Project is primarily developed using <a href="http://nodejs.org">node.js</a>, with a bit of Python to facilitate some integration points. We use <a href="http://npmjs.org">npm</a> to help manage internal system dependencies, and we try to follow <a href="http://en.wikipedia.org/wiki/Test-driven_development">TDD/BDD</a> as enthusiastically as our time will allow. Hopefully, these things will make it easy and exciting for interested developers to jump in, grok the system and start coding!</p>
 				<p>The <a href="http://github.com/LockerProject/Locker">code</a>, <a href="http://github.com/LockerProject/Locker/wiki">wiki</a> and <a href="http://github.com/LockerProject/Locker/issues">issues</a> on Github are all great places to get your hands on the code and familiar with the architecture of the system. We try to be as responsive as possible to pull requests and issues, so feel free to fork and hack!</p>
+
+				<img src="images/infinite_possibility.png" class="interstitial_right">
+				<h3>Telehash</h3>
+				<p>Soon, the Locker Project will integrate with <a href="http://telehash.org">Telehash</a>, providing fully distributed P2P communication for all lockers. Each locker can serve as a switch on the Telehash network, and maintain addressability on the <a href="http://en.wikipedia.org/wiki/Kademlia">Kademlia-based</a> distributed hash table that rests at the heart of the Telehash protocol. This integration will provide incredible flexibility and integrity for communication channels to and between lockers.</p>
 			</div>
 		</section>
 		
