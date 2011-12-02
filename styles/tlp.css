@@ -58,18 +58,6 @@ section p.summary {
 	
 }
 
-dl {
-	display: inline;
-	float: left;
-	position: relative;
-	margin-right: 10px;
-}
-
-dd {
-	margin-bottom: 12px;
-	line-height: 120%;
-}
-
 #headbar {
 	background-color: #504F4E;
 	height: 2px;

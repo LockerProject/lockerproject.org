@@ -187,15 +187,32 @@
 		<span id="getinvolved" class="bookmark"></span>
 			<div class="content">
 				<h2>Get Involved</h2>
-				<p>Join us on <a href="irc://irc.freenode.net/lockerproject">IRC at #lockerproject on irc.freenode.net</a> or take a look through the <a href="http://logs.lockerproject.org">logs</a> to see what people have been talking about. You can also find us on Twitter via <a href="http://twitter.com/#!/lockerproject">@lockerproject</a>.</p>
-				<p>The code base of the Locker Project is primarily developed using <a href="http://nodejs.org">node.js</a>, with a bit of Python to facilitate some integration points. We use <a href="http://npmjs.org">npm</a> to help manage internal system dependencies, and we try to follow <a href="http://en.wikipedia.org/wiki/Test-driven_development">TDD/BDD</a> as enthusiastically as our time will allow. Hopefully, these things will make it easy and exciting for interested developers to jump in, grok the system and start coding!</p>
+                <h3>Where to find us</h3>
+				<p>You can find us on <a href="irc://irc.freenode.net/lockerproject">IRC at #lockerproject on irc.freenode.net</a> or take a look through the <a href="http://logs.lockerproject.org">logs</a> to see what people have been talking about. We're on Twitter as <a href="http://twitter.com/#!/lockerproject">@lockerproject</a>.  The <a href="http://groups.google.com/group/singly-dev">Singly developer mailing list</a> is available for general discussion.  </p>
+				<h3>Under the Hood</h3>		
+				<p>The locker runs primarily under <a href="http://nodejs.org">node.js</a>, and so we use <a href="http://npmjs.org">npm</a> to manage Node module dependencies.</p>
 				<p>The <a href="http://github.com/LockerProject/Locker">code</a>, <a href="http://github.com/LockerProject/Locker/wiki">wiki</a> and <a href="http://github.com/LockerProject/Locker/issues">issues</a> on Github are all great places to get your hands on the code and familiar with the architecture of the system. We try to be as responsive as possible to pull requests and issues, so feel free to fork and hack!</p>
-				<h3>How Lockers Work</h3>		
-				<p>By using a rich system of connectors and collections, lockers make it possible to access and aggregate personal data, even when no traditional web API exists for the source. Interactions between lockers, applications, data and services are encrypted and secured via a highly secure protocol and system of authorization. Singly is working with experts and thought-leaders throughout the industry to provide open solutions to ensuring robust security for these personal data systems. This allows for even sensitive data to be safely included in a locker and made available for a person at all times.</p>
 
-				<img src="images/infinite_possibility.png" class="interstitial_right">
-				<h3>Telehash</h3>
-				<p>Soon, the Locker Project will integrate with <a href="http://telehash.org">Telehash</a>, providing fully distributed P2P communication for all lockers. Each locker can serve as a switch on the Telehash network, and maintain addressability on the <a href="http://en.wikipedia.org/wiki/Kademlia">Kademlia-based</a> distributed hash table that rests at the heart of the Telehash protocol. This integration will provide incredible flexibility and integrity for communication channels to and between lockers.</p>
+                <p>The source tree is organized as follows:</p>
+
+                <dl>
+                <dt>Connectors</dt>
+                <dd>These modules connect to a data source like Facebook or Flickr, and retrieve data to store in the locker.  Each connector provides a "synclet" to do this work.</dd>
+                <dt>Collections</dt>
+                <dd>Each collection provides a unified view of a certain data type, such as Photos or Contacts or Places.  It brings together data from all available sources, identifies duplicates, and so on.
+                <dt>Apps</dt>
+                <dd>An app provides a user interface to work with data in the locker. The dashboard itself is also an app.</dd>
+                <dt>Config</dt>
+                <dd>API keys and configuration settings are stored here.</dd>
+                <dt>Me</dt>
+                <dd>This is where the actual data is stored, organized by which module owns it.</dt>
+                <dt>tests</dt>
+                <dd>To run the test suite, run <tt>node runTests.js</tt> in this directory.</dd>
+                </dl>
+
+				<h3>Future</h3>
+				<p>The Locker Project will use <a href="http://telehash.org">Telehash</a> to create a peer to peer network between lockers, which will be used to enable person to person sharing regardless of where the locker is running.</p>
+
 			</div>
 		</section>
 		
