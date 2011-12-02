@@ -155,11 +155,17 @@
         <span id="download" class="bookmark"></span>
             <div class="content">
             <h2>Download</h2>
-				<p> To get started with local development, Lockerbox (by pib) is a straightforward way to get all the high-level dependencies installed at once. It will make a single directory called lockerbox and get everything set up inside of there.:</p>
+                <p>Locker is under active development, so it's not for the faint of heart.  There are no releases yet, but the latest code is always available in our git repository.</p>
+                <h3>System Requirements</h3>
+                We develop on MacOS Lion and Ubuntu 11.10 (oneiric).  Other
+                recent versions of those operating systems should work.
+                Windows is not currently supported.
+                <h3>Quick start</h3>
+				<p>You can use lockerbox (by pib) to get the code and all dependencies installed easily. It will make a single directory called lockerbox and get everything set up inside of there.:</p>
 				<pre>
     curl https://github.com/LockerProject/lockerbox/raw/master/lockerbox.sh | bash
 				</pre>
-				When that successfully completes, add lockerbox/local/bin to your path:
+				When that successfully completes, add <tt>lockerbox/local/bin</tt> to your path:
 				<pre>
     echo 'export PATH=$PATH:'`pwd`/lockerbox/local/bin >> ~/.profile
     source ~/.profile
@@ -167,11 +173,12 @@
                 Then:
 				<pre>
     cd lockerbox/Locker
-    #check to make sure everything worked
+    # check to make sure everything worked
     ./checkEnv.sh
     node lockerd.js
 				</pre>
-				If you encounter errors in "the fast way", or if you want to go through the process of setting everything up manually, check out the <a href="https://github.com/LockerProject/Locker/wiki/Detailed-Set-Up-Instructions">detailed set up instructions</a>.
+                <h3>Not so quick</h3>
+				If this doesn't work for you, or if you prefer to set everything up manually, check out the <a href="https://github.com/LockerProject/Locker/wiki/Detailed-Set-Up-Instructions">detailed set up instructions</a>.
             </div>
         </section>
 		
@@ -179,7 +186,7 @@
 		<span id="getinvolved" class="bookmark"></span>
 			<div class="content">
 				<h2>Get Involved</h2>
-				<p>Development and design are moving along at a rapid pace, and the community is engaged in some great discussions. Join us on <a href="irc://irc.freenode.net/lockerproject">IRC at #lockerproject on irc.freenode.net</a> or take a look through the <a href="http://logs.lockerproject.org">logs</a> to see what people have been talking about. You can also engage with the core team on Twitter via <a href="http://twitter.com/#!/lockerproject">@lockerproject</a>.</p>
+				<p>Join us on <a href="irc://irc.freenode.net/lockerproject">IRC at #lockerproject on irc.freenode.net</a> or take a look through the <a href="http://logs.lockerproject.org">logs</a> to see what people have been talking about. You can also find us on Twitter via <a href="http://twitter.com/#!/lockerproject">@lockerproject</a>.</p>
 				<p>The code base of the Locker Project is primarily developed using <a href="http://nodejs.org">node.js</a>, with a bit of Python to facilitate some integration points. We use <a href="http://npmjs.org">npm</a> to help manage internal system dependencies, and we try to follow <a href="http://en.wikipedia.org/wiki/Test-driven_development">TDD/BDD</a> as enthusiastically as our time will allow. Hopefully, these things will make it easy and exciting for interested developers to jump in, grok the system and start coding!</p>
 				<p>The <a href="http://github.com/LockerProject/Locker">code</a>, <a href="http://github.com/LockerProject/Locker/wiki">wiki</a> and <a href="http://github.com/LockerProject/Locker/issues">issues</a> on Github are all great places to get your hands on the code and familiar with the architecture of the system. We try to be as responsive as possible to pull requests and issues, so feel free to fork and hack!</p>
 				<h3>How Lockers Work</h3>		
