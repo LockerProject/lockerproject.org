@@ -1,6 +1,6 @@
 body {
 	margin: 0px;
-	font-size: 13px;
+	font-size: 16px;
 	font-family: 'futura', 'helveticaneue', Helvetica, Arial, sans-serif;
 	background-color: white;
 }
@@ -111,6 +111,7 @@ section p.summary {
 	margin: 30px auto;
 	color: #504F4E;
 	line-height: 130%;
+    font-size: 13px;
 	margin-bottom: 21px;
 	display: inline;
 	width: 1024px;
