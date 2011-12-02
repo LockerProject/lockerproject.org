@@ -171,9 +171,16 @@
     echo 'export PATH=$PATH:'`pwd`/lockerbox/local/bin >> ~/.profile
     source ~/.profile
 				</pre>
+                Next, you'll need to <a href="https://github.com/LockerProject/Locker/wiki/GettingAPIKeys">get API keys</a> for any services you wish to connect to:
+                <pre>
+    cd lockerbox/Locker/Config
+    cp apikeys.json.example apikeys.json
+    # See https://github.com/LockerProject/Locker/wiki/GettingAPIKeys
+    vi apikeys.json
+                </pre>
                 Then:
 				<pre>
-    cd lockerbox/Locker
+    cd ..
     # check to make sure everything worked
     ./checkEnv.sh
     node lockerd.js
