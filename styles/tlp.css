@@ -306,3 +306,36 @@ h4.right {
 #survey {
 	margin-left: 145px;
 }
+
+#sidebar {
+    position:absolute;
+    right:0;
+    top:180px;
+    padding:10px;
+    border:1px solid #aaa;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right:0;
+    line-height:32px;
+}
+
+#sidebar img {
+    vertical-align:top;
+    padding-right:8px;
+    border:0px;
+    height:32px;
+    width:32px;
+}
+
+#sidebar div {
+    margin-top:8px;
+}
+
+#sidebar div.first {
+    margin-top:0px;
+}
+
