@@ -172,8 +172,10 @@
 				<pre>
     curl https://raw.github.com/LockerProject/lockerbox/master/lockerbox.sh | bash
 				</pre>
+				<p>lockerbox may take some time to complete its work.</p>
                 </li>
-				<li><p>When that successfully completes, add <tt>lockerbox/local/bin</tt> to your path:</p>
+                <li>
+                <p>When it has successfully finished, add <tt>lockerbox/local/bin</tt> to your path:</p>
 				<pre>
     echo 'export PATH=$PATH:'`pwd`/lockerbox/local/bin >> ~/.profile
     source ~/.profile
@@ -182,18 +184,20 @@
                 <li>
                 <p>Next, you'll need to <a href="https://github.com/LockerProject/Locker/wiki/GettingAPIKeys">get API keys</a> for any services you wish to connect to:</p>
                 <pre>
-    cd lockerbox/Locker/Config
-    cp apikeys.json.example apikeys.json
+    cd lockerbox/Locker
+    cp Config/apikeys.json.example Config/apikeys.json
     # See https://github.com/LockerProject/Locker/wiki/GettingAPIKeys
-    vi apikeys.json
+    vi Config/apikeys.json
                 </pre>
                 </li>
                 <li>
-                <p>Then:</p>
+                <p>You can now start up the locker:</p>
 				<pre>
-    cd ..
     node lockerd.js
 				</pre>
+                </li>
+                <li>
+                <p>To access it, go to <a href="http://localhost:8042"><tt>http://localhost:8042</tt></a></p>
                 </li>
                 </ol>
                 <h3>Alternative, not-so-quick start</h3>
