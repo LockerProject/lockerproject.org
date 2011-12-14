@@ -165,15 +165,21 @@
                 recent versions of those operating systems should work.
                 Windows is not currently supported.</p>
                 <h3>Quick start</h3>
-				<p>You can use lockerbox (by <a href="https://github.com/pib/lockerbox">pib</a>) to get the code and all dependencies installed easily. It will make a single directory called lockerbox and get everything set up inside of there.:</p>
+				<p>We provide a script called lockerbox which will install Locker and all of its dependencies automatically. Everything is installed into a self-contained directory, without modifying any other part of your system. Thanks to <a href="http://github.com/pib">pib</a> for the original implementation.</p>
+                <ol>
+                <li>
+                <p>Download and run lockerbox using this command:</p>
 				<pre>
     curl https://raw.github.com/LockerProject/lockerbox/master/lockerbox.sh | bash
 				</pre>
-				When that successfully completes, add <tt>lockerbox/local/bin</tt> to your path:
+                </li>
+				<li>When that successfully completes, add <tt>lockerbox/local/bin</tt> to your path:
 				<pre>
     echo 'export PATH=$PATH:'`pwd`/lockerbox/local/bin >> ~/.profile
     source ~/.profile
 				</pre>
+                </li>
+                <li>
                 Next, you'll need to <a href="https://github.com/LockerProject/Locker/wiki/GettingAPIKeys">get API keys</a> for any services you wish to connect to:
                 <pre>
     cd lockerbox/Locker/Config
@@ -181,13 +187,17 @@
     # See https://github.com/LockerProject/Locker/wiki/GettingAPIKeys
     vi apikeys.json
                 </pre>
+                </li>
+                <li>
                 Then:
 				<pre>
     cd ..
     node lockerd.js
 				</pre>
-                <h3>Not so quick</h3>
-				If this doesn't work for you, or if you prefer to set everything up manually, check out the <a href="https://github.com/LockerProject/Locker/wiki/Detailed-Set-Up-Instructions">detailed set up instructions</a>.
+                </li>
+                </ol>
+                <h3>Alternative, not-so-quick start</h3>
+				If you prefer to set everything up manually, or just want to understand more about the process, check out the <a href="https://github.com/LockerProject/Locker/wiki/Detailed-Set-Up-Instructions">detailed set up instructions</a>.
             </div>
         </section>
 		
