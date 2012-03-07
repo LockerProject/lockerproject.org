@@ -166,24 +166,19 @@
                 Windows is not currently supported.</p>
                 <h3>Quick start</h3>
                 <ol>
-                <li><p>You'll need the following prerequisites installed:</p>
-                <ul>
-                <li>git</li>
-                <li>python</li>
-                </ul>
-                </li>
                 <li>
-				<p>We provide a script called <a href="https://github.com/LockerProject/lockerbox">lockerbox</a> which will install Locker and the rest of its dependencies automatically. Everything is installed into a self-contained directory, without modifying any other part of your system. Thanks to <a href="http://github.com/pib">pib</a> for the original implementation.</p>
-                <p>Download and run lockerbox using this command:</p>
+                <p>To download and build locker, you'll need git.  Then:</p>
 				<pre>
-    curl https://raw.github.com/LockerProject/lockerbox/master/lockerbox.sh | bash
+    git clone https://github.com/LockerProject/Locker.git
+    cd Locker
+    make
 				</pre>
-				<p>lockerbox may take some time to complete its work.</p>
+				<p>If any prerequisites are missing, the build system can
+                optionally install them into the source tree for you.</p>
                 </li>
                 <li>
                 <p>Next, you'll need to <a href="https://github.com/LockerProject/Locker/wiki/GettingAPIKeys">get API keys</a> for any services you wish to connect to:</p>
                 <pre>
-    cd lockerbox/Locker
     cp Config/apikeys.json.example Config/apikeys.json
     # See https://github.com/LockerProject/Locker/wiki/GettingAPIKeys
     vi Config/apikeys.json
