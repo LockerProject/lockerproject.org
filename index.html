@@ -5,12 +5,12 @@
 
 <head>
   <title>The Locker Project</title>
-  <link rel="stylesheet" media="screen" href="styles/tlp.css"> 
+  <link rel="stylesheet" media="screen" href="styles/tlp.css">
   <script src="scripts/jquery.min.js"></script>
   <script src='scripts/jquery.lightbox_me.js'></script>
   <script>
         $(function() {
-        
+
                 $("a[rel=lightbox]").click(function(e) {
                     console.log("Should lightbox");
                     $("#lightbox img").attr("src", $(this).attr("href"));
@@ -24,43 +24,43 @@
                         .replace(/(index|default).[a-zA-Z]{3,4}$/,'')
                         .replace(/\/$/,'');
                 }
-        
+
                 var locationPath = filterPath(location.pathname);
                 var scrollElem = scrollableElement('html', 'body');
-        
+
                 // Any links with hash tags in them (can't do ^= because of fully qualified URL potential)
                 $('a[href*=#]').each(function() {
-        
+
                         // Ensure it's a same-page link
                         var thisPath = filterPath(this.pathname) || locationPath;
                         if (  locationPath == thisPath
                                 && (location.hostname == this.hostname || !this.hostname)
                                 && this.hash.replace(/#/,'') ) {
-        
+
                                         // Ensure target exists
                                         var $target = $(this.hash), target = this.hash;
                                         if (target) {
-        
+
                                                 // Find location of target
                                                 var targetOffset = $target.offset().top;
                                                 $(this).click(function(event) {
-        
+
                                                         // Prevent jump-down
                                                         event.preventDefault();
-        
+
                                                         // Animate to target
                                                         $(scrollElem).animate({scrollTop: targetOffset}, 400, function() {
-        
+
                                                                 // Set hash in URL after animation successful
                                                                 location.hash = target;
-        
+
                                                         });
                                                 });
                                         }
                         }
-        
+
                 });
-        
+
                 // Use the first element that is "scrollable"  (cross-browser fix?)
                 function scrollableElement(els) {
                         for (var i = 0, argLength = arguments.length; i <argLength; i++) {
@@ -79,7 +79,7 @@
                         }
                         return [];
                 }
-        
+
         });
   </script>
 
@@ -89,27 +89,27 @@
 
 <div id="headbar"></div>
 
-<div id="menu"> 
+<div id="menu">
   <a href="http://github.com/LockerProject/Locker"><img style="position: absolute; top: 0; right: 0; border: 0;" src="images/forkme.png" alt="Fork me on GitHub"></a>
-  <div class="nav"> 
+  <div class="nav">
     <a href="http://www.lockerproject.org" class="logo"><img src="images/tlp_web_logo.png"></a>
-    <div id ="navlinks"> 
-      <a href="#about" class="toplink">ABOUT</a> 
-      <a href="#vision" class="toplink">OUR VISION</a> 
-      <a href="#demo" class="toplink">DEMO</a> 
-      <a href="#download" class="toplink">DOWNLOAD</a> 
-      <a href="#getinvolved" class="toplink">GET INVOLVED</a> 
+    <div id ="navlinks">
+      <a href="#about" class="toplink">ABOUT</a>
+      <a href="#vision" class="toplink">OUR VISION</a>
+      <a href="#demo" class="toplink">DEMO</a>
+      <a href="#download" class="toplink">DOWNLOAD</a>
+      <a href="#getinvolved" class="toplink">GET INVOLVED</a>
       <a href="http://github.com/LockerProject/Locker/wiki" class="toplink">WIKI</a>
-    </div>  
-  </div> 
-</div> 
+    </div>
+  </div>
+</div>
 
 <div id="space">
 </div>
 
 <div id='sidebar'>
   <div class='first'><a href='http://twitter.com/lockerproject'><img src='images/twitter.png' />Twitter</a></div>
-  <div><a href='http://blog.lockerproject.org'><img src='images/wordpress.png' />Our Blog</a></div>
+  <div><a href='http://blog.lockerproject.org'><img src='images/wordpress.png' />Blog</a></div>
 </div>
 
 <div id="main">
@@ -117,30 +117,28 @@
             <img src='#' />
         </div>
 
-		<section id="tlp_about">
-		<span id="about" class="bookmark"></span>
-			<div class="content">
-				<h2>About The Locker Project</h2>
+    <section id="tlp_about">
+    <span id="about" class="bookmark"></span>
+      <div class="content">
+        <h2>About The Locker Project</h2>
                 <div>
-				  <p>A Locker is a container for personal data, which gives the owner the ability to control how it's protected and shared.  It retrieves and consolidates data from multiple sources, to create a single collection of the things you see and do online: the photos you take, the places you visit, the links you share, contact details for the people you communicate with, and much more.  It also provides flexible APIs for developers to build rich applications with access to all of this information.</p>
-                  <a href='http://singly.com'><img src='images/singlybig.png' style='margin-top:-25px;float:right;width:108px;height:100.4px;border:0;' /></a>
-				  <p>The Locker Project is an open source development effort, permissively licensed, and sponsored by <a href="http://singly.com">Singly</a>.  Singly provides a personal data service based on this technology, and also welcomes its use by anyone for any purpose.</p>
+          <p>A Locker is a container for personal data, which gives the owner the ability to control how it's protected and shared.  It retrieves and consolidates data from multiple sources, to create a single collection of the things you see and do online: the photos you take, the places you visit, the links you share, contact details for the people you communicate with, and much more.  It also provides flexible APIs for developers to build rich applications with access to all of this information.</p>
                 <div>
-			</div>
-		</section>
-		
-		<section id="tlp_vision">
-		<span id="vision" class="bookmark"></span>
-			<div class="content">
-				<h2>Our Vision</h2>
-				<p>As we go through our lives we create vast amounts of data. Emails, phone calls, social network posts, photos, utility bills, health monitoring devices, text messages, browsing data, purchase receipts and more are all born out of the regular course of our actions.  It's more than just data.  It represents our actions, interests, intentions, communications, relationships, locations, behaviors and creative and consumptive efforts.</p>
-				
-				<p>Currently, our data is scattered everywhere. It lives in and is usually owned by the various networks into which it was created or exchanged. It's aggregated by third party trackers and targeters looking to deliver advertising, content and services to you. Billions of dollars are exchanged, industries built upon and value created off of our data, and it serves as the basis and is the foundation for some of the largest power structures on the web, and in the world at large.</p>
-		
-				<p>Meanwhile, the people who have benefited least from this ecosystem are the very people originating the data. Often times, in fact, these channels and organizations go out of their way to limit our ability to extract our data from the network and reuse our own content.  Limitless opportunities for engaging personalized applications and web experiences, as well as more free and open communication are lost when this happens.</p>
-				
-			</div>
-		</section>
+      </div>
+    </section>
+
+    <section id="tlp_vision">
+    <span id="vision" class="bookmark"></span>
+      <div class="content">
+        <h2>Our Vision</h2>
+        <p>As we go through our lives we create vast amounts of data. Emails, phone calls, social network posts, photos, utility bills, health monitoring devices, text messages, browsing data, purchase receipts and more are all born out of the regular course of our actions.  It's more than just data.  It represents our actions, interests, intentions, communications, relationships, locations, behaviors and creative and consumptive efforts.</p>
+
+        <p>Currently, our data is scattered everywhere. It lives in and is usually owned by the various networks into which it was created or exchanged. It's aggregated by third party trackers and targeters looking to deliver advertising, content and services to you. Billions of dollars are exchanged, industries built upon and value created off of our data, and it serves as the basis and is the foundation for some of the largest power structures on the web, and in the world at large.</p>
+
+        <p>Meanwhile, the people who have benefited least from this ecosystem are the very people originating the data. Often times, in fact, these channels and organizations go out of their way to limit our ability to extract our data from the network and reuse our own content.  Limitless opportunities for engaging personalized applications and web experiences, as well as more free and open communication are lost when this happens.</p>
+
+      </div>
+    </section>
 
         <section id="tlp_demo">
         <span id="demo" class="bookmark"></span>
@@ -170,12 +168,12 @@
                 <p>To get Locker, you'll need git.  If any other prerequisites
                 are missing, the build system can optionally try to install
                 them into the source tree for you.  Just follow the prompts.</p>
-				<pre>
+        <pre>
     git clone https://github.com/LockerProject/Locker.git
     cd Locker
     git submodule update --init
     make
-				</pre>
+        </pre>
                 </li>
                 <li>
                 <p>Next, you'll need to <a href="https://github.com/LockerProject/Locker/wiki/GettingAPIKeys">get API keys</a> for any services you wish to connect to:</p>
@@ -187,28 +185,28 @@
                 </li>
                 <li>
                 <p>You can now start up the locker:</p>
-				<pre>
+        <pre>
     ./locker
-				</pre>
+        </pre>
                 </li>
                 <li>
                 <p>To access it, go to <a href="http://localhost:8042"><tt>http://localhost:8042</tt></a></p>
                 </li>
                 </ol>
                 <h3>Alternative, not-so-quick start</h3>
-				<p>If you prefer to set everything up manually, or just want to understand more about the process, check out the <a href="https://github.com/LockerProject/Locker/wiki/Detailed-Set-Up-Instructions">detailed set up instructions</a>.</p>
+        <p>If you prefer to set everything up manually, or just want to understand more about the process, check out the <a href="https://github.com/LockerProject/Locker/wiki/Detailed-Set-Up-Instructions">detailed set up instructions</a>.</p>
             </div>
         </section>
-		
-		<section id="tlp_getinvolved">
-		<span id="getinvolved" class="bookmark"></span>
-			<div class="content">
-				<h2>Get Involved</h2>
+
+    <section id="tlp_getinvolved">
+    <span id="getinvolved" class="bookmark"></span>
+      <div class="content">
+        <h2>Get Involved</h2>
                 <h3>Where to find us</h3>
-				<p>You can find us on <a href="irc://irc.freenode.net/lockerproject">IRC at #lockerproject on irc.freenode.net</a> or take a look through the <a href="http://logs.lockerproject.org">logs</a> to see what people have been talking about. We're on Twitter as <a href="http://twitter.com/#!/lockerproject">@lockerproject</a>.  The <a href="http://groups.google.com/group/singly-dev">Singly developer mailing list</a> is available for general discussion. We also have a <a href="http://blog.lockerproject.org/">blog</a>. </p>
-				<h3>Under the Hood</h3>		
-				<p>The locker runs primarily under <a href="http://nodejs.org">node.js</a>, and so we use <a href="http://npmjs.org">npm</a> to manage Node module dependencies.</p>
-				<p>The <a href="http://github.com/LockerProject/Locker">code</a>, <a href="http://github.com/LockerProject/Locker/wiki">wiki</a> and <a href="http://github.com/LockerProject/Locker/issues">issues</a> on Github are all great places to get your hands on the code and familiar with the architecture of the system. We try to be as responsive as possible to pull requests and issues, so feel free to fork and hack!</p>
+        <p>You can find us on <a href="irc://irc.freenode.net/lockerproject">IRC at #lockerproject on irc.freenode.net</a> or take a look through the <a href="http://logs.lockerproject.org">logs</a> to see what people have been talking about. We're on Twitter as <a href="http://twitter.com/#!/lockerproject">@lockerproject</a>. We also have a <a href="http://blog.lockerproject.org/">blog</a>. </p>
+        <h3>Under the Hood</h3>
+        <p>The locker runs primarily under <a href="http://nodejs.org">node.js</a>, and so we use <a href="http://npmjs.org">npm</a> to manage Node module dependencies.</p>
+        <p>The <a href="http://github.com/LockerProject/Locker">code</a>, <a href="http://github.com/LockerProject/Locker/wiki">wiki</a> and <a href="http://github.com/LockerProject/Locker/issues">issues</a> on Github are all great places to get your hands on the code and familiar with the architecture of the system. We try to be as responsive as possible to pull requests and issues, so feel free to fork and hack!</p>
 
                 <p>The source tree is organized as follows:</p>
 
@@ -227,12 +225,12 @@
                 <dd>To run the whole test suite, use <tt>make test</tt>.</dd>
                 </dl>
 
-				<h3>Future</h3>
-				<p>The Locker Project will use <a href="http://telehash.org">Telehash</a> to create a peer to peer network between lockers, which will be used to enable person to person sharing regardless of where the locker is running.</p>
+        <h3>Future</h3>
+        <p>The Locker Project will use <a href="http://telehash.org">Telehash</a> to create a peer to peer network between lockers, which will be used to enable person to person sharing regardless of where the locker is running.</p>
 
-			</div>
-		</section>
-		
+      </div>
+    </section>
+
 </div>
 
 <script type="text/javascript">
